@@ -10,19 +10,51 @@
 ## 2. Project Structure
 ```
 /public_html
-  index.php
-  /assets
-    /css
-    /js
-    /images
-  /data
-    products.json
-    categories.json
-  /includes
-    /components
-    /config
-    /utils
-  /admin
+    index.php
+    products.php
+    categories.php
+    about.php
+    contact.php
+    /assets
+        /css
+            style.css
+            custom.css
+        /js
+            filters.js
+            products.js
+            main.js
+        /images
+            /products
+            /ui
+    /data
+        products.json
+        categories.json
+        config.json
+    /includes
+        /components
+            header.php
+            footer.php
+            nav.php
+            sidebar.php
+            product-card.php
+        /config
+            database.php
+            settings.php
+        /utils
+            functions.php
+            helpers.php
+    /admin
+        index.php
+        products-manager.php
+        categories-manager.php
+        /includes
+            admin-header.php
+            admin-footer.php
+        /assets
+            /css
+                admin-style.css
+            /js
+                admin-main.js
 ```
 
 ## 3. Core Features Breakdown
