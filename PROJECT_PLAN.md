@@ -1,21 +1,28 @@
 # Gift Recommendation Website Project Plan
 
 ## 1. Technical Stack
-- Frontend: React.js (for robust UI components and state management)
-- CSS Framework: Tailwind CSS (for rapid styling and responsive design)
-- Build Tool: Vite (for fast development experience)
+- Frontend: HTML5, CSS3, and Vanilla JavaScript
+- Backend: PHP
+- CSS Framework: Bootstrap (CDN version for simplified hosting)
+- Data Storage: JSON files
 - Version Control: Git
 
 ## 2. Project Structure
 ```
-/src
-  /components
-    /layout
-    /product
-    /filters
+/public_html
+  index.php
+  /assets
+    /css
+    /js
+    /images
   /data
-  /styles
-  /utils
+    products.json
+    categories.json
+  /includes
+    /components
+    /config
+    /utils
+  /admin
 ```
 
 ## 3. Core Features Breakdown
@@ -39,35 +46,36 @@
 - Real-time filter updates
 
 ### 3.3 UI Components
-- Navigation header
-- Filter sidebar
-- Product tile grid
-- Individual product tiles
-- Responsive layout adjustments
+- PHP header include
+- Navigation menu
+- Filter sidebar (JavaScript-powered)
+- Product grid
+- Individual product cards
+- Responsive layout with Bootstrap
 
 ## 4. Development Phases
 
 ### Phase 1: Setup & Basic Structure
-1. Initialize React project with Vite
-2. Set up Tailwind CSS
-3. Create basic folder structure
-4. Implement basic routing
+1. Set up basic PHP project structure
+2. Create JSON data files structure
+3. Create include files for common components
+4. Set up Bootstrap via CDN
 
 ### Phase 2: Core Components
-1. Create product tile component
-2. Implement grid layout
-3. Add hover effects
+1. Create product card HTML/CSS
+2. Implement PHP templates
+3. Add JavaScript interactivity
 4. Create sidebar structure
 
 ### Phase 3: Data & Filtering
-1. Set up mock product data structure
-2. Implement basic filtering logic
-3. Connect filters to product display
-4. Add real-time filter updates
+1. Set up JSON product data structure
+2. Create PHP file handling logic
+3. Implement AJAX for dynamic updates
+4. Add client-side filter state management
 
 ### Phase 4: Styling & Responsiveness
 1. Implement responsive design
-2. Add Tailwind styling
+2. Add Bootstrap styling
 3. Polish hover effects
 4. Ensure cross-browser compatibility
 
@@ -79,36 +87,41 @@
 
 ## 5. Component Specifications
 
-### Product Tile
-```typescript
-interface ProductTile {
-  name: string;
-  price: number;
-  category: 'family' | 'partner' | 'friends';
-  // Future attributes
+### Product Structure
+```php
+class Product {
+    public $id;
+    public $name;
+    public $price;
+    public $category;
+    
+    public static function loadFromJson($jsonFile) {
+        return json_decode(file_get_contents($jsonFile), true);
+    }
 }
 ```
 
 ### Filter Structure
-```typescript
-interface Filters {
-  category: string[];
-  priceRange: {
-    min: number;
-    max: number;
-  };
-  // Future filter attributes
-}
+```javascript
+const filters = {
+    category: [],
+    priceRange: {
+        min: 0,
+        max: 0
+    }
+    // Future filter attributes
+};
 ```
 
 ## 6. Style Guidelines
-- Color scheme: TBD
-- Responsive breakpoints:
-  - Mobile: 320px
-  - Tablet: 768px
-  - Desktop: 1024px
-- Hover effect: Subtle elevation shadow + slight scale
-- Typography: System fonts for performance
+- Bootstrap 5 components and utilities
+- Custom CSS for specific styling needs
+- Responsive breakpoints (Bootstrap defaults):
+  - Mobile: < 576px
+  - Tablet: ≥ 768px
+  - Desktop: ≥ 992px
+- Hover effects using CSS transitions
+- System fonts with Bootstrap defaults
 
 ## 7. Future Enhancements
 - Product images
@@ -126,8 +139,10 @@ interface Filters {
 - Mobile-first responsive design
 
 ## 9. Implementation Notes
-- Use CSS Grid for tile layout
-- Implement virtualization if product list grows large
-- Use CSS transitions for smooth hover effects
-- Implement debouncing for filter updates
-- Use local storage for filter persistence
+- Use CSS Grid/Flexbox for product layout
+- Implement lazy loading for images
+- Use PHP sessions for filter persistence
+- Implement file caching for better performance
+- Use JSON file locking for concurrent access
+- Implement proper security measures (XSS protection)
+- Regular data backups of JSON files

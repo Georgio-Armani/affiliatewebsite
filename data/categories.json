@@ -1,0 +1,19 @@
+{
+  "categories": [
+    {
+      "id": "family",
+      "name": "Family",
+      "description": "Gifts for family members"
+    },
+    {
+      "id": "partner",
+      "name": "Partner",
+      "description": "Gifts for your significant other"
+    },
+    {
+      "id": "friends",
+      "name": "Friends",
+      "description": "Gifts for friends"
+    }
+  ]
+}
